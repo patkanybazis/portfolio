@@ -3,31 +3,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setTimeout(() => {
     document.body.classList.add("loaded");
-    setupHorizontalScroll();
+    setupHorizontalScroll(); // your horizontal scroll function
+    setupSkillsReveal(); // <- make sure this is here
+    setupMissionTitleReveal(); // if you have it
+    setupMissionParagraphReveal(); // if you have it
+    setupMissionStatsReveal(); // if you have it
   }, LOADER_DURATION);
 
   if (typeof setupBinaryHover === "function") {
     setupBinaryHover();
-  }
-
-  if (typeof setupMissionReveal === "function") {
-    setupMissionReveal();
-  }
-
-  if (typeof setupMissionReveal === "function") {
-    setupMissionReveal();
-  }
-
-  if (typeof setupMissionTitleReveal === "function") {
-    setupMissionTitleReveal();
-  }
-
-  if (typeof setupMissionParagraphReveal === "function") {
-    setupMissionParagraphReveal();
-  }
-
-  if (typeof setupMissionStatsReveal === "function") {
-    setupMissionStatsReveal();
   }
 });
 
@@ -216,14 +200,23 @@ function setupMissionStatsReveal() {
 
   if (!missionPanel || !stats.length) return;
 
+  let hasAnimated = false;
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+
           stats.forEach((stat, i) => {
             setTimeout(() => {
               stat.classList.add("visible");
-            }, i * 180); // stagger delay
+
+              const numEl = stat.querySelector(".stat-number");
+              if (numEl) {
+                animateCountNumber(numEl, 500);
+              }
+            }, i * 180); // stagger each stat
           });
         }
       });
@@ -235,3 +228,102 @@ function setupMissionStatsReveal() {
 
   observer.observe(missionPanel);
 }
+
+// animate number counting from 0 to target
+
+function animateCountNumber(element, duration) {
+  const fullText = element.textContent.trim();
+  const match = fullText.match(/^(\d+)(.*)$/);
+
+  if (!match) return;
+
+  const target = parseInt(match[1], 10);
+  const suffix = match[2] || "";
+  const start = 0;
+  const startTime = performance.now();
+
+  function frame(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    // ease-out with a simple ease function
+    const eased = 1 - Math.pow(1 - progress, 2);
+
+    const current = Math.floor(start + (target - start) * eased);
+    element.textContent = current + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(frame);
+    }
+  }
+
+  requestAnimationFrame(frame);
+}
+
+function setupSkillsReveal() {
+  const panel = document.getElementById("skills");
+  if (!panel) return;
+
+  const title = panel.querySelector(".skills-title");
+  const description = panel.querySelector(".skills-description");
+  const cards = panel.querySelectorAll(".ani-skill");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // heading
+          if (title) {
+            title.classList.add("visible");
+          }
+
+          // description
+          if (description) {
+            setTimeout(() => {
+              description.classList.add("visible");
+            }, 150);
+          }
+
+          // cards stagger
+          cards.forEach((card, i) => {
+            setTimeout(() => {
+              card.classList.add("visible");
+            }, 200 + i * 150);
+          });
+        }
+      });
+    },
+    {
+      threshold: 0.3, // a bit lower so it definitely triggers
+    }
+  );
+
+  observer.observe(panel);
+}
+
+function revealCategories() {
+  const cols = document.querySelectorAll(".category-col");
+  cols.forEach((col) => {
+    const rect = col.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85) {
+      col.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealCategories);
+window.addEventListener("load", revealCategories);
+
+function revealVerticalPanels() {
+  const panels = document.querySelectorAll(".vertical-panel");
+
+  panels.forEach((panel) => {
+    const rect = panel.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85) {
+      panel.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealVerticalPanels);
+window.addEventListener("load", revealVerticalPanels);

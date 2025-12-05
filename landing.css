@@ -114,14 +114,27 @@ body.loaded #loader {
 html,
 body {
   height: 100%;
-  overflow-x: hidden;
 }
 
 /* Horizontal scroll container */
 #horizontal-scroll {
-  position: fixed;
-  inset: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
   overflow: hidden;
+}
+
+#horizontal-wrapper {
+  position: relative;
+  width: 100vw;
+  /* height will be set in JS based on how wide the panels are */
+}
+
+body {
+  margin: 0;
+  background: #0d1024;
+  font-family: system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 /* The track that we slide horizontally */
@@ -145,7 +158,7 @@ body {
 
 #landing {
   min-height: 100vh;
-  background: var(--col-bg-dark); /* #171123 */
+  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -156,6 +169,7 @@ body {
   transform: translateY(10px);
   transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
+
 /* show landing when body has loaded */
 body.loaded #landing {
   opacity: 1;
@@ -209,4 +223,37 @@ body.loaded #landing {
   text-transform: uppercase;
   white-space: nowrap;
   opacity: 0.9;
+}
+
+/* background inside the horizontal scroll */
+.scroll-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* make sure the track sits above the background */
+.scroll-track {
+  position: relative;
+  z-index: 1;
+}
+
+:root {
+  --hue-1: 265;
+  --hue-2: 340;
+  --hue-3: 215;
+  --sat: 95%;
+  --light: 60%;
+  --blur: 140px;
+  --grain-opacity: 0.08;
+  --speed-1: 12s;
+  --speed-2: 18s;
+  --speed-3: 22s;
+}
+
+.scroll-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }

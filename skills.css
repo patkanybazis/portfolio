@@ -1,0 +1,184 @@
+/* Skills panel styling */
+/* Skills panel styling */
+#skills {
+  background: transparent; /* blobs show behind, or keep subtle gradient if you want */
+  text-align: left;
+}
+
+.skills-content {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+
+  /* NEW LAYOUT: column stack */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* left side intro block */
+.skills-intro {
+  max-width: 26rem;
+}
+
+/* bigger heading, left aligned */
+.skills-title {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #f5edf9;
+
+  margin-bottom: 3rem; /* space above the bubbles */
+}
+
+.skills-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* description below the title */
+.skills-description {
+  max-width: 26rem;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--color-light-purple);
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.skills-description.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Skill cards grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  gap: 2.5rem;
+  justify-items: center; /* center horizontally */
+  width: 100%;
+  max-width: 50rem;
+}
+
+/* Animation for skill cards */
+.ani-skill {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.ani-skill.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Base card layout */
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  min-height: 230px;
+  color: #f5edf9;
+}
+
+/* iOS bubble glass */
+.glassbox {
+  position: relative;
+  width: 280px;
+  height: 190px;
+  padding: 1.4rem;
+  border-radius: 20px;
+
+  /* KEY FIX: Remove dark tint, use super light tint */
+  background: rgba(255, 255, 255, 0.08);
+
+  /* KEY FIX: Stronger blur so background colors shine through */
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+
+  /* Soft border + glow */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  /* Subtle shadow */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(255, 255, 255, 0.15);
+
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* iOS glossy top highlight */
+.glassbox::before {
+  content: "";
+  position: absolute;
+  inset: -10% -10% 50%;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 255, 255, 0.65),
+    transparent 60%
+  );
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* iOS shimmering rim */
+.glassbox::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.35),
+    transparent 70%
+  );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* content stays bright */
+.glassbox > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* gentle lift on hover */
+.glassbox:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.25);
+}
+
+/* title inside bubble */
+
+.skill-card h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* small list inside bubble */
+.skill-list {
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: rgba(240, 236, 255, 0.95);
+}
+.skill-list li + li {
+  margin-top: 0.1rem;
+}

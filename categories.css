@@ -1,0 +1,58 @@
+/* Whole slide in deep purple tone */
+.categories-panel {
+  width: 100vw;
+  height: 100vh;
+  background: #171123; /* deep purple */
+  display: flex;
+  padding-top: 4rem;
+}
+
+/* 4-column grid */
+.categories-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  width: 100%;
+  height: 100%;
+  gap: 0;
+}
+
+/* Box columns */
+.category-box {
+  border-right: 1px solid rgba(245, 237, 249, 0.12); /* soft purple-white */
+  padding: 3rem 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.category-box:last-child {
+  border-right: none;
+}
+
+/* Giant number */
+.category-num {
+  font-size: 11rem;
+  line-height: 0.9;
+  font-weight: 200;
+  color: #835c98; /* soft lavender highlight from your palette */
+  opacity: 0.8;
+}
+
+/* Category title */
+.category-title {
+  font-size: 2.25rem;
+  line-height: 1.1;
+  font-weight: 500;
+  color: #f5edf9; /* light cream from your palette */
+  text-align: left;
+}
+
+/* Description (bottom) */
+.category-desc {
+  font-size: 1rem;
+  color: rgba(245, 237, 249, 0.75); /* soft readable cream */
+  text-align: left;
+  line-height: 1.5;
+  max-width: 20rem;
+}
