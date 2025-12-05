@@ -1,0 +1,46 @@
+/* Mission panel styling */
+#mission {
+  background: var(--color-dark-purple);
+}
+
+.mission-content {
+  max-width: 64rem;
+}
+
+.mission-content h2 {
+  font-size: 3.75rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--color-cream, #f5edf9);
+}
+
+.mission-content p {
+  font-size: 1.5rem;
+  color: var(--color-light-purple);
+  line-height: 1.6;
+}
+
+.mission-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.stat-item {
+  text-align: left;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--color-deep-purple);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-light-purple);
+}
