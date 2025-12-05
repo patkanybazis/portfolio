@@ -13,6 +13,22 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof setupMissionReveal === "function") {
     setupMissionReveal();
   }
+
+  if (typeof setupMissionReveal === "function") {
+    setupMissionReveal();
+  }
+
+  if (typeof setupMissionTitleReveal === "function") {
+    setupMissionTitleReveal();
+  }
+
+  if (typeof setupMissionParagraphReveal === "function") {
+    setupMissionParagraphReveal();
+  }
+
+  if (typeof setupMissionStatsReveal === "function") {
+    setupMissionStatsReveal();
+  }
 });
 
 function setupBinaryHover() {
@@ -107,4 +123,115 @@ function setupMissionReveal() {
   );
 
   observer.observe(section);
+}
+
+function setupMissionTitleReveal() {
+  const title = document.querySelector(".mission-title");
+  const missionPanel = document.getElementById("mission");
+  if (!title || !missionPanel) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          title.classList.add("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.5, // triggers when half the panel is visible
+    }
+  );
+
+  observer.observe(missionPanel);
+}
+
+function setupMissionParagraphReveal() {
+  const paragraph = document.querySelector(".mission-paragraph");
+  const missionPanel = document.getElementById("mission");
+
+  if (!paragraph || !missionPanel) return;
+
+  // STEP 1: get each line based on layout
+  const words = paragraph.innerText.split(" ");
+  paragraph.innerHTML = ""; // reset
+
+  const tempSpan = document.createElement("span");
+  paragraph.appendChild(tempSpan);
+
+  let line = [];
+
+  words.forEach((word) => {
+    const testLine = [...line, word].join(" ");
+    tempSpan.innerText = testLine;
+
+    // if the test line exceeds width, finalize previous line
+    if (tempSpan.offsetWidth > paragraph.offsetWidth) {
+      const lineSpan = document.createElement("span");
+      lineSpan.className = "mission-line";
+      lineSpan.innerText = line.join(" ");
+      paragraph.appendChild(lineSpan);
+      line = [word];
+      tempSpan.innerText = word;
+    } else {
+      line.push(word);
+    }
+  });
+
+  // add the last line
+  if (line.length > 0) {
+    const lineSpan = document.createElement("span");
+    lineSpan.className = "mission-line";
+    lineSpan.innerText = line.join(" ");
+    paragraph.appendChild(lineSpan);
+  }
+
+  // remove temp
+  tempSpan.remove();
+
+  const lines = paragraph.querySelectorAll(".mission-line");
+
+  // STEP 2: observe mission section
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          lines.forEach((line, i) => {
+            setTimeout(() => {
+              line.classList.add("visible");
+            }, i * 150); // stagger
+          });
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  observer.observe(missionPanel);
+}
+
+function setupMissionStatsReveal() {
+  const missionPanel = document.getElementById("mission");
+  const stats = document.querySelectorAll(".ani-stat");
+
+  if (!missionPanel || !stats.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          stats.forEach((stat, i) => {
+            setTimeout(() => {
+              stat.classList.add("visible");
+            }, i * 180); // stagger delay
+          });
+        }
+      });
+    },
+    {
+      threshold: 0.4,
+    }
+  );
+
+  observer.observe(missionPanel);
 }

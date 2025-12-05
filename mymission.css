@@ -44,3 +44,45 @@
   letter-spacing: 0.1em;
   color: var(--color-light-purple);
 }
+
+/* animation */
+
+/* Start hidden, positioned to the right */
+.mission-title {
+  opacity: 0;
+  transform: translateX(80px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* When visible: slide into place */
+.mission-title.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Each line wrapper */
+.mission-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* When activated */
+.mission-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stats start hidden */
+.ani-stat {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* When visible */
+.ani-stat.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
