@@ -1,14 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const LOADER_DURATION = 2600;
+  const loader = document.getElementById("loader");
+
+  // If loader missing, just load normally
+  if (!loader) {
+    document.body.classList.add("loaded");
+    setupHorizontalScroll();
+    setupSkillsReveal();
+    setupMissionTitleReveal();
+    setupMissionParagraphReveal();
+    setupMissionStatsReveal();
+    return;
+  }
+
+  // Phase timings (ms)
+  const T_INTRO = 120; // start reveal
+  const T_EXPAND = 1100; // stars grow
+  const T_FLASH = 2000; // background goes white
+  const T_DONE = 2600; // fade out loader, show site
+
+  setTimeout(() => loader.classList.add("is-intro"), T_INTRO);
+  setTimeout(() => loader.classList.add("is-expand"), T_EXPAND);
+  setTimeout(() => loader.classList.add("is-flash"), T_FLASH);
 
   setTimeout(() => {
     document.body.classList.add("loaded");
-    setupHorizontalScroll(); // your horizontal scroll function
-    setupSkillsReveal(); // <- make sure this is here
-    setupMissionTitleReveal(); // if you have it
-    setupMissionParagraphReveal(); // if you have it
-    setupMissionStatsReveal(); // if you have it
-  }, LOADER_DURATION);
+
+    setupHorizontalScroll();
+    setupSkillsReveal();
+    setupMissionTitleReveal();
+    setupMissionParagraphReveal();
+    setupMissionStatsReveal();
+  }, T_DONE);
 
   if (typeof setupBinaryHover === "function") {
     setupBinaryHover();
@@ -60,30 +82,38 @@ function setupBinaryHover() {
 //missionhorizontal
 
 function setupHorizontalScroll() {
+  const region = document.querySelector("#h-scroll-region");
   const track = document.querySelector(".scroll-track");
-  if (!track) return;
+  if (!region || !track) return;
 
-  const panels = document.querySelectorAll(".panel");
-  const totalPanels = panels.length;
-  const viewportW = window.innerWidth;
+  function recalc() {
+    const viewportH = window.innerHeight;
 
-  // total horizontal distance we can move
-  const maxTranslate = viewportW * (totalPanels - 1);
+    // How far the track can move horizontally (in px)
+    const maxTranslate = Math.max(0, track.scrollWidth - window.innerWidth);
 
-  // set body height so we have enough vertical scroll space
-  const maxScrollY = maxTranslate;
-  document.body.style.height = window.innerHeight + maxScrollY + "px";
+    // Give the wrapper enough vertical height to drive the horizontal move
+    region.style.height = viewportH + maxTranslate + "px";
+
+    return { maxTranslate, viewportH };
+  }
+
+  let dims = recalc();
 
   function update() {
-    const scrollY = window.scrollY;
-    const clamped = Math.max(0, Math.min(scrollY, maxScrollY));
-    const translateX = -clamped;
+    const regionTop = region.offsetTop;
+    const localY = window.scrollY - regionTop;
 
-    track.style.transform = `translateX(${translateX}px)`;
+    const x = Math.max(0, Math.min(localY, dims.maxTranslate));
+    track.style.transform = `translateX(${-x}px)`;
   }
 
   window.addEventListener("scroll", update);
-  window.addEventListener("resize", () => {});
+  window.addEventListener("resize", () => {
+    dims = recalc();
+    update();
+  });
+
   update();
 }
 
@@ -327,3 +357,28 @@ function revealVerticalPanels() {
 
 window.addEventListener("scroll", revealVerticalPanels);
 window.addEventListener("load", revealVerticalPanels);
+
+function revealMyWorks() {
+  const title = document.getElementById("myworksh");
+  if (!title) return;
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          title.classList.add("is-visible");
+          obs.unobserve(entry.target); // animate once
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(title);
+}
+
+window.addEventListener("load", () => {
+  setupHorizontalScroll();
+  revealMyWorks();
+  setupContactHorizontal();
+});

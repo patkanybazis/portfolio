@@ -1,0 +1,54 @@
+/* ABOUT CV SECTION */
+#about-cv {
+  background: #ffffff;
+  min-height: 140vh; /* gives space before & after sticky */
+}
+
+/* sticky container */
+#about-cv .about-sticky {
+  position: sticky;
+  top: 110px; /* navbar offset */
+  height: calc(100vh - 110px);
+  display: flex;
+  align-items: center;
+}
+
+/* content wrapper */
+#about-cv .about-content {
+  width: 100%;
+  padding: 0 6vw;
+}
+
+/* title */
+#about-cv .about-title {
+  color: #f6edf9;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 2rem;
+}
+
+/* layout */
+#about-cv .about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+}
+
+/* left text */
+#about-cv .about-left p {
+  color: rgba(246, 237, 249, 0.85);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+/* right cards */
+#about-cv .about-right {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* glassbox spacing tweak */
+#about-cv .glassbox {
+  width: 100%;
+  height: auto;
+}

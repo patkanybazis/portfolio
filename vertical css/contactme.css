@@ -1,0 +1,54 @@
+/* CONTACT CV SECTION */
+#contact-cv {
+  background: #000000;
+  min-height: 140vh; /* gives space before & after sticky */
+}
+
+/* sticky container */
+#contact-cv .contact-sticky {
+  position: sticky;
+  top: 110px; /* navbar offset */
+  height: calc(100vh - 110px);
+  display: flex;
+  align-items: center;
+}
+
+/* content wrapper */
+#contact-cv .contact-content {
+  width: 100%;
+  padding: 0 6vw;
+}
+
+/* title */
+#contact-cv .contact-title {
+  color: #f6edf9;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 2rem;
+}
+
+/* layout */
+#contact-cv .contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+}
+
+/* left text */
+#contact-cv .contact-left p {
+  color: rgba(246, 237, 249, 0.85);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+/* right cards */
+#contact-cv .contact-right {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* glassbox spacing tweak */
+#contact-cv .glassbox {
+  width: 100%;
+  height: auto;
+}

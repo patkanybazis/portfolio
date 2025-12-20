@@ -1,0 +1,56 @@
+/* MY WORKS: sticky slide */
+#after-categories {
+  position: relative;
+
+  /* gives scroll room so sticky can hold */
+  height: 200dvh;
+  min-height: 200vh;
+
+  background-color: #f6edf9;
+}
+
+/* the actual full-screen sticky layer */
+#after-categories {
+  display: block;
+}
+
+/* make the H1 itself the sticky slide */
+#myworksh {
+  position: sticky;
+  top: 0;
+
+  height: 100dvh;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0 6vw;
+
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: #171123;
+  text-align: center;
+
+  /* your animation */
+  opacity: 0;
+  transform: translateY(60px);
+  transition: transform 700ms ease, opacity 700ms ease;
+  will-change: transform, opacity;
+}
+
+/* When revealed */
+#myworksh.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  #myworksh {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

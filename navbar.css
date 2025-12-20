@@ -20,11 +20,15 @@
 }
 
 .nav-logo {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #f5edf9;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  margin-left: -12px;
+}
+
+.nav-logo img {
+  height: 80px; /* controls logo size */
+  width: auto;
+  display: block;
 }
 
 .nav-links {
