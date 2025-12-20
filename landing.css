@@ -33,14 +33,14 @@ body {
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--col-bg-light); /* start with #f5edf9 */
+  background: var(--col-bg-light);
   color: var(--text-dark);
   overflow: hidden;
 }
 
 /* state after loading ends */
 body.loaded {
-  background: var(--col-bg-dark); /* #171123 */
+  background: var(--col-bg-dark);
   color: var(--text-light);
   overflow: auto;
 }
@@ -69,7 +69,6 @@ body {
 #horizontal-wrapper {
   position: relative;
   width: 100vw;
-  /* height will be set in JS based on how wide the panels are */
 }
 
 body {
@@ -125,10 +124,10 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 70%;
-  max-width: 600px; /* adjust */
+  max-width: 600px;
   height: auto;
   z-index: 2;
-  pointer-events: none; /* optional */
+  pointer-events: none;
 }
 
 /* show landing when body has loaded */
@@ -219,12 +218,10 @@ body.loaded #landing {
   overflow: hidden;
 }
 
-/* A scroll region that gives us the vertical space needed to "drive" horizontal movement */
 #h-scroll-region {
   position: relative;
 }
 
-/* Your vertical content after the horizontal scroller */
 .vertical-section {
   min-height: 100vh;
   padding: 6rem 2rem;
@@ -244,9 +241,9 @@ body.loaded #landing {
 .landing-portfolio-img {
   position: absolute;
   left: 50%;
-  top: 15%; /* move up/down */
+  top: 15%;
   transform: translateX(-50%);
-  width: min(1400px, 120vw); /* scale here */
+  width: min(1400px, 120vw);
   height: auto;
   z-index: 1;
   pointer-events: none;

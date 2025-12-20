@@ -1,13 +1,13 @@
 /* CONTACT CV SECTION */
 #contact-cv {
   background: #000000;
-  min-height: 140vh; /* gives space before & after sticky */
+  min-height: 140vh;
 }
 
 /* sticky container */
 #contact-cv .contact-sticky {
   position: sticky;
-  top: 110px; /* navbar offset */
+  top: 110px;
   height: calc(100vh - 110px);
   display: flex;
   align-items: center;

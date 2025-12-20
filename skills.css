@@ -1,7 +1,7 @@
 /* Skills panel styling */
-/* Skills panel styling */
+
 #skills {
-  background: transparent; /* blobs show behind, or keep subtle gradient if you want */
+  background: transparent;
   text-align: left;
 }
 
@@ -10,7 +10,7 @@
   margin: 0 auto;
   padding: 6rem 2rem;
 
-  /* NEW LAYOUT: column stack */
+  /*column stack */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +34,7 @@
   letter-spacing: 0.08em;
   color: #f5edf9;
 
-  margin-bottom: 3rem; /* space above the bubbles */
+  margin-bottom: 3rem;
 }
 
 .skills-title.visible {
@@ -61,9 +61,9 @@
 /* Skill cards grid */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
-  justify-items: center; /* center horizontally */
+  justify-items: center;
   width: 100%;
   max-width: 50rem;
 }
@@ -97,19 +97,13 @@
   padding: 1.4rem;
   border-radius: 40px;
 
-  /* Fill: white 15% */
   background: rgba(255, 255, 255, 0.15);
 
-  /* Stroke: white 20%, 2pt */
   border: 2px solid rgba(255, 255, 255, 0.2);
 
-  /* Background blur: 40 */
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
 
-  /* Effects:
-     - Drop shadow: black 4%
-     - Inner shadow: white 30% */
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.04),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
 
@@ -117,13 +111,12 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* content stays crisp */
 .glassbox > * {
   position: relative;
   z-index: 1;
 }
 
-/* subtle lift on hover (kept from your original) */
+/* subtle lift on hover */
 .glassbox:hover {
   transform: translateY(-4px);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06),

@@ -11,10 +11,10 @@
   z-index: 9999;
 }
 
-/* The centered anchor box, stars + logo position relative to this */
+/* The centered anchor box*/
 .loader-stage {
   position: relative;
-  width: 220px; /* adjust if you want a bigger/smaller composition */
+  width: 220px;
   height: 220px;
 }
 
@@ -23,7 +23,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 500px; /* resize logo here */
+  width: 500px;
   height: auto;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -31,12 +31,12 @@
   transition: opacity 600ms ease, transform 600ms ease;
 }
 
-/* Stars start centered (then each star gets its own offset) */
+/* Stars start centered */
 .loader-star {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 18px; /* resize stars here */
+  width: 18px;
   height: 18px;
   transform: translate(-50%, -50%);
   z-index: 3;
@@ -45,7 +45,7 @@
   will-change: transform, opacity;
 }
 
-/* Individual star offsets (tweak these numbers to move them around) */
+/* Individual star offsets */
 .star-1 {
   transform: translate(-50%, -50%) translate(-178px, 5px) scale(0);
 }
@@ -53,8 +53,6 @@
 .star-2 {
   transform: translate(-50%, -50%) translate(115px, -1px) scale(0.5);
 }
-
-/* ===== SEQUENCE CLASSES (your JS toggles these) ===== */
 
 /* Phase 1: show logo + stars */
 #loader.is-intro .loader-logo {
@@ -77,12 +75,12 @@
   transition: transform 2600ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Phase 3: flash background (optional) */
+/* Phase 3: flash background  */
 #loader.is-flash {
-  background: #f5edf9; /* light cream/white */
+  background: #f5edf9;
 }
 
-/* Optional: fade logo during flash */
+/*fade logo during flash */
 #loader.is-flash .loader-logo {
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.98);
