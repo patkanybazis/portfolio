@@ -7,8 +7,20 @@
 
   --text-light: #f5edf9;
   --text-dark: #171123;
+
   --transition-fast: 0.3s ease;
   --transition-slow: 0.8s ease;
+
+  --hue-1: 265;
+  --hue-2: 340;
+  --hue-3: 215;
+  --sat: 95%;
+  --light: 60%;
+  --blur: 140px;
+  --grain-opacity: 0.08;
+  --speed-1: 12s;
+  --speed-2: 18s;
+  --speed-3: 22s;
 }
 
 *,
@@ -26,19 +38,21 @@ body {
 
 @font-face {
   font-family: "RosieBrown";
-  src: url("fonts\RosieBrownSerifDemo.otf") format("opentype");
+  src: url("fonts/RosieBrownSerifDemo.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
+/* Default state (during loader) */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--col-bg-light);
   color: var(--text-dark);
   overflow: hidden;
+  margin: 0;
 }
 
-/* state after loading ends */
+/* State after loading ends */
 body.loaded {
   background: var(--col-bg-dark);
   color: var(--text-light);
@@ -49,13 +63,6 @@ body.loaded #loader {
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--transition-slow);
-}
-
-/* LANDING PAGE */
-
-html,
-body {
-  height: 100%;
 }
 
 /* Horizontal scroll container */
@@ -71,19 +78,15 @@ body {
   width: 100vw;
 }
 
-body {
-  margin: 0;
-  background: #0d1024;
-  font-family: system-ui, sans-serif;
-  overflow-x: hidden;
-}
-
-/* The track that we slide horizontally */
+/* The track horizontally */
 .scroll-track {
   height: 100%;
   display: flex;
   flex-direction: row;
   will-change: transform;
+
+  position: relative;
+  z-index: 1;
 }
 
 /* One full-screen panel */
@@ -97,40 +100,54 @@ body {
   justify-content: center;
 }
 
-#landing {
-  min-height: 100vh;
+/* Background inside the horizontal scroll */
+.scroll-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
 
+/* Optional wrappers */
+#h-scroll-region {
+  position: relative;
+}
+
+.vertical-section {
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  background: #171123;
+  color: #f5edf9;
+}
+
+/* =========================
+   LANDING
+   ========================= */
+
+#landing {
   background-image: url("img/landing.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
   position: relative;
+  isolation: isolate; /* IMPORTANT: locks stacking context inside landing */
   min-height: 100vh;
   overflow: hidden;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+
   padding: 6rem 2rem 2rem;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
 
-.landing-bottom-img {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  max-width: 600px;
-  height: auto;
-  z-index: 2;
-  pointer-events: none;
-}
-
-/* show landing when body has loaded */
+/* Show landing when body has loaded */
 body.loaded #landing {
   opacity: 1;
   transform: translateY(0);
@@ -154,7 +171,6 @@ body.loaded #landing {
 }
 
 /* Scroll indicator row */
-
 .scroll-indicator {
   margin-top: 2.5rem;
   display: flex;
@@ -185,59 +201,12 @@ body.loaded #landing {
   opacity: 0.9;
 }
 
-/* background inside the horizontal scroll */
-.scroll-bg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
-}
+/* =========================
+   LANDING LAYERS (BACK -> FRONT)
+   z-index: 0 (portfolio) -> 1 (orchid) -> 2 (uxui/desi) -> 3 (me)
+   ========================= */
 
-/* make sure the track sits above the background */
-.scroll-track {
-  position: relative;
-  z-index: 1;
-}
-
-:root {
-  --hue-1: 265;
-  --hue-2: 340;
-  --hue-3: 215;
-  --sat: 95%;
-  --light: 60%;
-  --blur: 140px;
-  --grain-opacity: 0.08;
-  --speed-1: 12s;
-  --speed-2: 18s;
-  --speed-3: 22s;
-}
-
-.scroll-bg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-#h-scroll-region {
-  position: relative;
-}
-
-.vertical-section {
-  min-height: 100vh;
-  padding: 6rem 2rem;
-  background: #171123;
-  color: #f5edf9;
-}
-
-#h-scroll-region {
-  position: relative;
-}
-
-.vertical-section {
-  min-height: 100vh;
-  padding: 6rem 2rem;
-}
-
+/* PORTFOLIO TEXT (backmost) */
 .landing-portfolio-img {
   position: absolute;
   left: 50%;
@@ -245,7 +214,8 @@ body.loaded #landing {
   transform: translateX(-50%);
   width: min(1400px, 120vw);
   height: auto;
-  z-index: 1;
+
+  z-index: 0;
   pointer-events: none;
   user-select: none;
 
@@ -255,4 +225,140 @@ body.loaded #landing {
 
 body.loaded .landing-portfolio-img {
   opacity: 1;
+}
+
+/* ORCHID (above portfolio, behind everything else) */
+.landing-orchid-img {
+  position: absolute;
+  bottom: 6vh;
+  left: 30%;
+  transform: translateX(-50%) rotate(-18deg);
+
+  width: 55%;
+  max-width: 300px;
+  height: auto;
+
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+
+.landing-orchid2 {
+  position: absolute;
+
+  left: 65%;
+  bottom: 18vh;
+  transform: translateX(-50%) rotate(18deg);
+
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+
+body.loaded .landing-orchid2 {
+  opacity: 1;
+}
+
+body.loaded .landing-orchid-img,
+.landing-orchid2 {
+  opacity: 1;
+}
+
+/* UX/UI TEXT (bottom-left, above orchid) */
+.landing-uxui-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 45%;
+  max-width: 300px;
+  height: auto;
+
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 900ms ease, transform 900ms ease;
+}
+
+body.loaded .landing-uxui-img {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* DESIGNER TEXT (bottom-right, above orchid) */
+.landing-desi-img {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 900ms ease, transform 900ms ease;
+}
+
+body.loaded .landing-desi-img {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MAIN IMAGE (you) – front */
+.landing-bottom-img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 70%;
+  max-width: 600px;
+  height: auto;
+
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Mobile tweak */
+@media (max-width: 768px) {
+  .landing-desi-img {
+    max-width: 240px;
+    right: 5vw;
+    bottom: 2vh;
+    opacity: 0.6;
+  }
+
+  .landing-uxui-img {
+    max-width: 240px;
+    opacity: 0.7;
+  }
+
+  .landing-bottom-img {
+    width: 85%;
+    max-width: 520px;
+  }
+
+  .landing-orchid-img {
+    width: 80%;
+    bottom: 0;
+    opacity: 0.7;
+  }
 }

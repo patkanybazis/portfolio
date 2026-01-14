@@ -324,7 +324,7 @@ function setupSkillsReveal() {
       });
     },
     {
-      threshold: 0.3, // a bit lower so it definitely triggers
+      threshold: 0.3,
     }
   );
 
@@ -367,7 +367,7 @@ function revealMyWorks() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           title.classList.add("is-visible");
-          obs.unobserve(entry.target); // animate once
+          obs.unobserve(entry.target);
         }
       });
     },

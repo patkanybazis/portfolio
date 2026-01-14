@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Adrien Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="landing.css" />
+    <link rel="stylesheet" href="navbar.css" />
+    <link rel="stylesheet" href="mymission.css" />
+    <link rel="stylesheet" href="skills.css" />
+    <!--<link rel="stylesheet" href="colourfulbackground.css" /> -->
+    <link rel="stylesheet" href="categories.css" />
+    <link rel="stylesheet" href="vertical css/aboutme.css" />
+    <link rel="stylesheet" href="vertical css/myworks.css" />
+    <link rel="stylesheet" href="vertical css/worksdisplay.css" />
+    <link rel="stylesheet" href="vertical css/contactme.css" />
+    <link rel="stylesheet" href="loader.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="nav">
+      <div class="nav-logo">
+        <img src="img/logo.png" alt="Adrien logo" />
+      </div>
+
+      <nav class="nav-links">
+        <a href="#landing" class="nav-link">My works</a>
+        <a href="#landing" class="nav-link">About me</a>
+        <a href="#landing" class="nav-link">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Loading screen -->
+
+    <div id="loader">
+      <div class="loader-stage">
+        <img class="loader-logo" src="img/logo.png" alt="Adrien logo" />
+
+        <!-- stars-->
+        <img class="loader-star star-1" src="img/star.png" alt="" />
+        <img class="loader-star star-2" src="img/star.png" alt="" />
+      </div>
+    </div>
+
+    <div id="h-scroll-region">
+      <!-- Main horizontal scroller -->
+      <div id="horizontal-scroll">
+        <!-- background inside horizontal scroll -->
+        <div class="scroll-bg">
+          <div class="wash"></div>
+
+          <div class="blob purple"></div>
+          <div class="blob pink"></div>
+          <div class="blob blue"></div>
+
+          <div class="grain"></div>
+        </div>
+        <div class="scroll-track">
+          <!-- Slide 1: landing -->
+          <section id="landing" class="panel">
+            <!--
+            <h1>Creative Designer<br />& Developer</h1>
+            <p>
+              Crafting beautiful digital experiences through<br />graphic
+              design, UX/UI, and code
+            </p>
+
+            <div class="scroll-indicator">
+              <div class="scroll-line"></div>
+              <span class="scroll-text">Scroll to explore</span>
+              <div class="scroll-line"></div>
+            </div>-->
+
+            <!-- BACKGROUND TEXT -->
+            <img
+              src="img/portfoliotext.png"
+              alt="PORTFOLIO"
+              class="landing-portfolio-img"
+            />
+
+            <!-- ORCHIDS -->
+            <img src="img/orchid.png" alt="" class="landing-orchid-img" />
+            <img src="img/orchid.png" alt="" class="landing-orchid2" />
+
+            <!-- DECORATIVE TEXT -->
+            <img src="img/uxuitext.png" alt="" class="landing-uxui-img" />
+            <img src="img/DESIGNER.png" alt="" class="landing-desi-img" />
+
+            <!-- MAIN IMAGE (YOU) – FRONT -->
+            <img src="img/ME.png" alt="" class="landing-bottom-img" />
+          </section>
+
+          <!-- Slide 2: mission -->
+          <section id="mission" class="panel">
+            <div class="mission-content">
+              <h2 class="mission-title">MY MISSION</h2>
+              <p class="mission-paragraph">
+                My mission is to design and develop digital experiences that
+                stand out through strong visuals, smart structure, and
+                meaningful user interaction. I merge graphic design and web
+                development to create work that is not only beautiful but
+                strategic, helping brands communicate confidently and
+                effectively.
+              </p>
+              <div class="mission-stats">
+                <div class="stat-item ani-stat">
+                  <div class="stat-number">20+</div>
+                  <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item ani-stat">
+                  <div class="stat-number">3</div>
+                  <div class="stat-label">Main tools</div>
+                </div>
+                <div class="stat-item ani-stat">
+                  <div class="stat-number">1</div>
+                  <div class="stat-label">Goal</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 3: Skills -->
+          <section id="skills" class="panel">
+            <div class="skills-content">
+              <div class="skills-intro">
+                <h2 class="skills-title">My Skills</h2>
+              </div>
+              <div class="skills-grid">
+                <div class="skill-card glassbox ani-skill">
+                  <h3>Design</h3>
+                  <ul class="skill-list">
+                    <li>Graphic Design</li>
+                    <li>Visual Design</li>
+                    <li>Illustrations</li>
+                    <li>3D Modeling</li>
+                    <li>Motion Graphics</li>
+                  </ul>
+                </div>
+
+                <div class="skill-card glassbox ani-skill">
+                  <h3>Web</h3>
+                  <ul class="skill-list">
+                    <li>HTML, CSS, JavaScript</li>
+                    <li>Web Design</li>
+                    <li>UI / UX Principles</li>
+                    <li>Accessibility</li>
+                    <li>Git</li>
+                  </ul>
+                </div>
+
+                <div class="skill-card glassbox ani-skill">
+                  <h3>Multimedia</h3>
+                  <ul class="skill-list">
+                    <li>2D & 3D Animation</li>
+                    <li>Video Editing</li>
+                    <li>Photography</li>
+                  </ul>
+                </div>
+
+                <div class="skill-card glassbox ani-skill">
+                  <h3>Qualities</h3>
+                  <ul class="skill-list">
+                    <li>Innovative Mindset</li>
+                    <li>Problem-solving</li>
+                    <li>Continuous Growth</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="categories" class="panel categories-panel">
+            <div class="categories-grid">
+              <div class="category-box">
+                <span class="category-num">1</span>
+                <h3 class="category-title">Graphic<br />Design</h3>
+                <p class="category-desc">
+                  Transforming complex data into clean, intuitive user
+                  experiences.
+                </p>
+              </div>
+
+              <div class="category-box">
+                <span class="category-num">2</span>
+                <h3 class="category-title">UX / UI<br />Design</h3>
+                <p class="category-desc">
+                  Turning complexity into clarity through refined data
+                  visualization.
+                </p>
+              </div>
+
+              <div class="category-box">
+                <span class="category-num">3</span>
+                <h3 class="category-title">
+                  Content<br />
+                  Design
+                </h3>
+                <p class="category-desc">
+                  Designing seamless digital products that scale beautifully.
+                </p>
+              </div>
+
+              <div class="category-box">
+                <span class="category-num">4</span>
+                <h3 class="category-title">Coding</h3>
+                <p class="category-desc">
+                  Crafting meaningful brand identities with personality and
+                  clarity.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <section id="after-categories" class="vertical-section">
+      <h1 id="myworksh">My works</h1>
+    </section>
+
+    <section id="works-showcase">
+      <!-- CATEGORY 1 -->
+      <section class="work-category" data-category="Graphic Design">
+        <div class="category-sticky">
+          <div class="category-frame">
+            <div class="category-title" aria-hidden="true"></div>
+
+            <div class="slides">
+              <article class="slide">
+                <h2 class="slide-header">Poster Series</h2>
+                <p class="slide-desc">
+                  A set of experimental posters exploring contrast and rhythm.
+                </p>
+                <div class="slide-media">
+                  <img src="assets/work1a.jpg" alt="" />
+                  <img src="assets/work1b.jpg" alt="" />
+                </div>
+              </article>
+
+              <article class="slide">
+                <h2 class="slide-header">nyanya</h2>
+                <p class="slide-desc">
+                  A set of experimental posters exploring contrast and rhythm.
+                </p>
+                <div class="slide-media">
+                  <img src="assets/work1a.jpg" alt="" />
+                  <img src="assets/work1b.jpg" alt="" />
+                </div>
+              </article>
+
+              <article class="slide">
+                <h2 class="slide-header">ihhhyyy</h2>
+                <p class="slide-desc">
+                  A set of experimental posters exploring contrast and rhythm.
+                </p>
+                <div class="slide-media">
+                  <img src="assets/work1a.jpg" alt="" />
+                  <img src="assets/work1b.jpg" alt="" />
+                </div>
+              </article>
+
+              <article class="slide">
+                <h2 class="slide-header">Album Cover</h2>
+                <p class="slide-desc">
+                  Cover design built around typography and texture.
+                </p>
+                <div class="slide-media">
+                  <img src="assets/work2a.jpg" alt="" />
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORY 2 -->
+      <section class="work-category" data-category="Web Design">
+        <div class="category-sticky">
+          <div class="category-frame">
+            <div class="category-title" aria-hidden="true"></div>
+
+            <div class="slides">
+              <article class="slide">
+                <h2 class="slide-header">Landing Page</h2>
+                <p class="slide-desc">
+                  Responsive landing page with motion and clean hierarchy.
+                </p>
+                <div class="slide-media">
+                  <img src="assets/web1.jpg" alt="" />
+                </div>
+              </article>
+
+              <article class="slide">
+                <h2 class="slide-header">Portfolio UI</h2>
+                <p class="slide-desc">
+                  A minimal UI system for personal branding.
+                </p>
+                <div class="slide-media">
+                  <img src="assets/web2.jpg" alt="" />
+                  <img src="assets/web3.jpg" alt="" />
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="about-cv">
+      <div class="about-sticky">
+        <div class="about-content">
+          <h2 class="about-title">About Me</h2>
+
+          <div class="about-grid">
+            <div class="about-left">
+              <p>
+                I’m a multidisciplinary designer focused on building clear,
+                confident visuals and interactive experiences. I enjoy working
+                with strong layouts, subtle motion, and systems that scale.
+              </p>
+
+              <p>
+                My background combines design thinking with technical awareness,
+                allowing me to translate ideas into polished, functional
+                results.
+              </p>
+            </div>
+
+            <div class="about-right">
+              <div class="glassbox">
+                <h3>Skills</h3>
+                <p>UI/UX, Graphic Design, Motion, Branding</p>
+              </div>
+
+              <div class="glassbox">
+                <h3>Tools</h3>
+                <p>Figma, Photoshop, After Effects, HTML/CSS</p>
+              </div>
+
+              <div class="glassbox">
+                <h3>Experience</h3>
+                <p>
+                  Freelance projects, personal design systems, web portfolios
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-cv">
+      <div class="contact-sticky">
+        <div class="contact-content">
+          <h2 class="contact-title">Contact Me</h2>
+
+          <div class="contact-grid">
+            <div class="contact-left">
+              <p>
+                Interested in working together, collaborating, or just having a
+                conversation about design and ideas?
+              </p>
+
+              <p>
+                I’m always open to new projects, freelance opportunities, and
+                creative discussions. Feel free to reach out through any channel
+                below.
+              </p>
+            </div>
+
+            <div class="contact-right">
+              <div class="glassbox">
+                <h3>Email</h3>
+                <p>youremail@example.com</p>
+              </div>
+
+              <div class="glassbox">
+                <h3>Socials</h3>
+                <p>Instagram · LinkedIn · GitHub</p>
+              </div>
+
+              <div class="glassbox">
+                <h3>Availability</h3>
+                <p>Open for freelance and collaborative projects</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script src="works.js"></script>
+  </body>
+</html>

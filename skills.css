@@ -1,7 +1,19 @@
 /* Skills panel styling */
 
 #skills {
-  background: transparent;
+  position: relative;
+  min-height: 100vh;
+
+  background-image: url("img/landing.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 6rem 2rem;
   text-align: left;
 }
 
@@ -10,7 +22,6 @@
   margin: 0 auto;
   padding: 6rem 2rem;
 
-  /*column stack */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,16 +33,15 @@
   max-width: 26rem;
 }
 
-/* bigger heading, left aligned */
+/* bigger heading */
 .skills-title {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: 3.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
   color: #f5edf9;
 
   margin-bottom: 3rem;
@@ -42,7 +52,7 @@
   transform: translateY(0);
 }
 
-/* description below the title */
+/* description below title */
 .skills-description {
   max-width: 26rem;
   font-size: 1.2rem;
@@ -80,15 +90,25 @@
   transform: translateY(0);
 }
 
-/* Base card layout */
+/* Base card layout (default: centered content) */
 .skill-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   text-align: left;
   min-height: 230px;
   color: #f5edf9;
 }
+
+.skill-card.lift-title {
+  justify-content: flex-start;
+}
+
+/* For Design + Web: lift list slightly up */
+.skill-card.lift-list .skill-list {
+  margin-top: -0.6rem;
+}
+
 /* Figma-style glass box */
 .glassbox {
   position: relative;
@@ -98,7 +118,6 @@
   border-radius: 40px;
 
   background: rgba(255, 255, 255, 0.15);
-
   border: 2px solid rgba(255, 255, 255, 0.2);
 
   backdrop-filter: blur(40px);
@@ -124,9 +143,8 @@
 }
 
 /* title inside bubble */
-
 .skill-card h3 {
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
   font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -134,15 +152,39 @@
   color: #ffffff;
 }
 
-/* small list inside bubble */
+/* ===== STAR BULLET LIST ===== */
+
 .skill-list {
   margin: 0.25rem 0 0;
   padding: 0;
   list-style: none;
-  font-size: 0.85rem;
-  line-height: 1.45;
+
+  font-size: 1.05rem;
+  line-height: 1.7rem;
   color: rgba(240, 236, 255, 0.95);
 }
+
+.skill-list li {
+  position: relative;
+  padding-left: 2.2rem;
+}
+
 .skill-list li + li {
-  margin-top: 0.1rem;
+  margin-top: 0.25rem;
+}
+
+.skill-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+
+  width: 20px;
+  height: 20px;
+
+  background-image: url("img/star.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  opacity: 0.9;
 }

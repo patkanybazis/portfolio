@@ -52,11 +52,10 @@
 
   pointer-events: none;
 
-  opacity: 0; /* hidden by default */
+  opacity: 0;
   transition: opacity 200ms ease;
 }
 
-/* show title ONLY when category is active */
 #works-showcase .work-category.is-active-category .category-title {
   opacity: 0.9;
 }
@@ -75,7 +74,7 @@
   position: absolute;
   inset: 0;
 
-  padding: 90px 6vw 6vw; /* space for title + navbar */
+  padding: 90px 6vw 6vw;
   display: grid;
   grid-template-rows: auto auto 1fr;
   gap: 14px;

@@ -21,8 +21,6 @@
     #0b0e23;
 }
 
-/* blobs, grain, keyframes exactly as you had them */
-
 .blob {
   position: absolute;
   width: 65vmax;

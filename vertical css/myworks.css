@@ -1,11 +1,8 @@
 /* MY WORKS: sticky slide */
 #after-categories {
   position: relative;
-
-  /* gives scroll room so sticky can hold */
   height: 200dvh;
   min-height: 200vh;
-
   background-color: #f6edf9;
 }
 
@@ -14,7 +11,7 @@
   display: block;
 }
 
-/* make the H1 itself the sticky slide */
+/*H1 itself the sticky slide */
 #myworksh {
   position: sticky;
   top: 0;
